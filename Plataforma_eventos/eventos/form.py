@@ -16,6 +16,7 @@ class EventoForm(forms.ModelForm):
         fields = ['nombre', 'descripcion', 'tipo_evento', 'privado', 'fecha', 'ubicacion']
         widgets = {
             'fecha': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+            'privado': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }
 
     def clean_fecha(self):
