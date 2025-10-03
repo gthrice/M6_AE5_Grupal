@@ -1,6 +1,19 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
+
+
+
 # Create your models here.
+class CustomUser(AbstractUser):
+    class Meta:
+        permissions = [
+            ("view_eventos", "Puede ver la sección de eventos"),
+            ("crear_evento", "Puede crear un evento"),
+            ("editar_evento", "Puede editar un evento"),
+            ("eliminar_evento", "Puede eliminar un evento"),
+            ("asistir_evento", "Puede asistir a un evento"),
+            ("ver_eventos_privados", "Puede ver eventos privados"),
+        ]
 
 class Evento(models.Model):
 
@@ -9,9 +22,9 @@ class Evento(models.Model):
     tipo_evento = models.CharField(max_length=50)
     privado = models.BooleanField(default=False)
     fecha = models.DateTimeField()
-    organizador = models.ForeignKey(User, on_delete=models.CASCADE)
     ubicacion = models.CharField(max_length=200)
 
     def __str__(self):
         return self.nombre
+
 
