@@ -2,6 +2,13 @@
 {% block title %}Registrar Evento{% endblock %}
 {% block header %}Registrar Evento{% endblock %}
 {% block formulario_base %}
+{% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+{% endif %}
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

@@ -1,6 +1,7 @@
 import django.forms as forms
 from django.utils import timezone
-from .models import Evento
+from .models import Evento,CustomUser
+from django.contrib.auth.forms import UserCreationForm
 
 class EventoForm(forms.ModelForm):
     class Meta:
@@ -24,4 +25,9 @@ class EventoForm(forms.ModelForm):
         if fecha < timezone.now():
             raise forms.ValidationError("La fecha del evento no puede ser en el pasado.")
         return fecha
+
+class CustomUserCreationForm(UserCreationForm):
+        class Meta:
+            model = CustomUser
+            fields = ('username', 'email', 'first_name', 'last_name')
     

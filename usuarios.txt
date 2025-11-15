@@ -1,0 +1,8 @@
+user: admin
+pass: admin123456
+user: premiun
+pass: pre123456
+user: asistente
+pass: asis123456
+user: orga
+pass: orga123456
